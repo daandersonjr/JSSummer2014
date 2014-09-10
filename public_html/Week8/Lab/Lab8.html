@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <style>
+            #lab {
+                
+                position: absolute;
+                 }
+            
+        </style> 
+    </head>
+    <body>
+        <div id="lab">TODO write content</div>
+        <button id="fadeIn">Fade In</button>
+        <button id="fadeOut">Fade Out</button>
+        <button id="moveDiv">Move Div</button>
+        
+        <script>
+            
+            var div = document.getElementById('lab');
+            var fadeIn = document.getElementById('fadeIn');
+            var fadeOut = document.getElementById('fadeOut');
+            var moveDiv = document.getElementById('moveDiv');
+            var fading = 0;
+            var fadeTime;
+            var divPosLeft = 0;
+    
+            fadeIn.addEventListener('click', fadeInBtn);
+            fadeOut.addEventListener('click', fadeOutBtn);
+            moveDiv.addEventListener('click', divMove);
+            
+            function fadeDiv() {
+                
+                fading++;
+                div.style.opacity = fading + "px"; 
+                
+                if (fading > 1) {
+                    
+                    clearInterval(fadeTime);
+                    
+                }
+            }
+                
+            function fadeInBtn(){    
+                
+                
+            }
+            
+            function divMove(){
+                
+                divPosLeft = divPosLeft + 10;
+                div.style.left = divPosLeft + "px";
+                
+            }
+            
+            
+            
+            
+        </script>
+        
+       
+    </body>
+    
+     
+    
+    
+    
+</html>
