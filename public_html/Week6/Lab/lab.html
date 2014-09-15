@@ -29,6 +29,7 @@
 		
                 showResults.addEventListener('click',makeAJAXCall);
 		
+                //This returns the server response at a string plus the content of the html and keeps it looping
 		function callback() {
 			var response = xhr.responseText;  
 						
@@ -38,7 +39,7 @@
 
 		}
 		
-		
+		//This means if the server is ready and the page is ok it will continue processing 
 		xhr.onreadystatechange = function() { 
 									
 		   if (xhr.readyState==4 && xhr.status==200) {  
@@ -47,6 +48,7 @@
 		};  
 		
 		
+        //If the user scrolls to the end of the page it will load more information from another URL for 3 more steps
                 function makeAJAXCall(){
                     if ( step < 5 ) {                      
                         xhr.open('GET', url+step, true);  
@@ -55,16 +57,17 @@
                 }
 		
 		
-                
+                //When the page has to load it will make the AJAX Call
 		window.addEventListener('load', makeAJAXCall);
 
-
+       // A function saying if while the user is scrolling and there is more info make the AJAX Call
                 function scrollCheck() {
 			if ( (window.innerHeight + window.scrollY) >= document.body.offsetHeight) {				
 				makeAJAXCall();
 			}
 		}
 		
+                //When the user scrolls this will call the above function
 		window.addEventListener("scroll", scrollCheck);
 		
 		
