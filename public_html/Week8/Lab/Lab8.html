@@ -2,19 +2,19 @@
 
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width">
         <style>
             #lab {
-                
-                position: absolute;
+                     position: relative;
+                     
                  }
             
         </style> 
     </head>
     <body>
-        <div id="lab">TODO write content</div>
+        <div id="lab">Lab 8</div>
         <button id="fadeIn">Fade In</button>
         <button id="fadeOut">Fade Out</button>
         <button id="moveDiv">Move Div</button>
@@ -25,8 +25,8 @@
             var fadeIn = document.getElementById('fadeIn');
             var fadeOut = document.getElementById('fadeOut');
             var moveDiv = document.getElementById('moveDiv');
-            var fading = 0;
-            var fadeTime;
+            var fading = 1;
+            var fadeTime = setInterval (fadeDiv, 100);
             var divPosLeft = 0;
     
             fadeIn.addEventListener('click', fadeInBtn);
@@ -35,19 +35,27 @@
             
             function fadeDiv() {
                 
-                fading++;
-                div.style.opacity = fading + "px"; 
                 
-                if (fading > 1) {
+                div.style.opacity = fading;
+                
+                
+              if (fading < 1.0) {
                     
-                    clearInterval(fadeTime);
+                    setInterval(fadeDiv, 10);
                     
+                }
+                else {
+                  clearInterval(fadeDiv);
                 }
             }
                 
             function fadeInBtn(){    
+                setInterval(fadeDiv, 10);
                 
-                
+            }
+            
+            function fadeOutBtn(){
+                clearInterval(fadetime);
             }
             
             function divMove(){
