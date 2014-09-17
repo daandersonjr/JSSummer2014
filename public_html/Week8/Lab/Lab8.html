@@ -26,37 +26,45 @@
             var fadeOut = document.getElementById('fadeOut');
             var moveDiv = document.getElementById('moveDiv');
             var fading = 1;
-            var fadeTime = setInterval (fadeDiv, 100);
+            var fadeTimer = setInterval(fadeOutFunc, 100);
+            
             var divPosLeft = 0;
     
-            fadeIn.addEventListener('click', fadeInBtn);
-            fadeOut.addEventListener('click', fadeOutBtn);
-            moveDiv.addEventListener('click', divMove);
             
-            function fadeDiv() {
+            
+            function fadeInFunc() {
                 
-                
+                fading = fading + 0.1;
                 div.style.opacity = fading;
                 
+                if (fading > 1){
+                    clearInterval(fadeTimer);
+                }
                 
-              if (fading < 1.0) {
-                    
-                    setInterval(fadeDiv, 10);
-                    
-                }
-                else {
-                  clearInterval(fadeDiv);
-                }
             }
                 
-            function fadeInBtn(){    
-                setInterval(fadeDiv, 10);
+            function fadeOutFunc(){
+                fading = fading - 0.1;
+                div.style.opacity = fading;
+                
+                if (fading < 0) {
+                    clearInterval(fadeTimer);
+                }
+                
+                
+            }
+            
+            function fadeInBtn(){
+                fadeTimer = setInterval (fadeInFunc, 100);
+                
                 
             }
             
             function fadeOutBtn(){
-                clearInterval(fadetime);
+                fadeTimer = setInterval(fadeOutFunc, 100);
             }
+            
+            
             
             function divMove(){
                 
@@ -64,8 +72,11 @@
                 div.style.left = divPosLeft + "px";
                 
             }
+            setTimeout(function(){alert("Hi");}, 1500);
             
-            
+            fadeIn.addEventListener('click', fadeInBtn);
+            fadeOut.addEventListener('click', fadeOutBtn);
+            moveDiv.addEventListener('click', divMove);
             
             
         </script>
